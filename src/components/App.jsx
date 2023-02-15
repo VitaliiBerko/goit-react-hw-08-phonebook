@@ -1,13 +1,24 @@
 import { Fragment, useEffect } from 'react';
-
+import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 import { ContactForm } from './ContactForm/ContactForm';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
 import s from './app.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchContacts } from 'redux/operations';
-import { selectContacts, selectError, selectIsloading } from 'redux/contacts.selector';
+import { fetchContacts } from 'redux/contacts/operations';
+import {
+  selectContacts,
+  selectError,
+  selectIsloading,
+} from 'redux/contacts/contacts.selector';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { lazy, Suspense } from 'react';
+import Layout from './Layout/Loyout';
+import HomePage from 'pages/HomePage/HomePage';
+import JoinPage from 'pages/JoinPage/JoinPage';
+import LoginPage from 'pages/Login/LoginPage';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -15,28 +26,45 @@ export const App = () => {
   const isLoading = useSelector(selectIsloading);
   const error = useSelector(selectError);
 
-
-  useEffect(()=> {
+  useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
   return (
-    <Fragment>
-      <h1 className={s.container}>Phonebook</h1>
-      {isLoading && !error && <p>Loading...</p>}
-      <ContactForm />
+    <BrowserRouter basename='/goit-react-hw-08-phonebook'>
+      
+      
+      <Suspense fallback={<p>Loading...</p>}> 
 
-      <h2 className={s.container}>Contacts</h2>
-      <Filter />
-      {!!contacts && <ContactList />}
-    </Fragment>
+      <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<HomePage />} />
+            <Route path="/register" element={<JoinPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            {/* <Route path="movies/:movieId" element={<MovieDetails />}>
+              <Route path="cast" element={<Cast />} />
+              <Route path="reviews" element={<Reviews />} />
+            </Route> */}
+          </Route>
+          <Route path="*" element={<HomePage />} />
+        </Routes>    
+      
+      
+      <Fragment>
+        <h1 className={s.container}>Phonebook</h1>
+        {isLoading && !error && <p>Loading...</p>}
+        <ContactForm />
+
+        <h2 className={s.container}>Contacts</h2>
+        <Filter />
+        {!!contacts && <ContactList />}
+      </Fragment>
+
+      </Suspense>
+      <ToastContainer />
+    </BrowserRouter>
   );
 };
-
-
-
-
-
 
 // export const App = ()=> {
 //   state = {
