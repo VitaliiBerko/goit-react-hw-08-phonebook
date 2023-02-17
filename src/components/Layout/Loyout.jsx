@@ -1,7 +1,9 @@
 import { Outlet } from 'react-router-dom';
 // import { NavLink } from 'react-router-dom';
 // import css from './layout.module.css';
-import { Nav, StyledNavLink } from './layout.styled';
+// import { Nav, StyledNavLink } from './layout.styled';
+import { Suspense } from 'react';
+import { AppBar } from 'components/AppBar/AppBar';
 
 // const aciveStyle = {
 //   color: 'tomato',
@@ -10,7 +12,11 @@ import { Nav, StyledNavLink } from './layout.styled';
 const Layout = () => {
   return (
     <div>
-      <header>
+      <AppBar />
+      <Suspense fallback={null}>
+        <Outlet />
+      </Suspense>
+      {/* <header>
         <Nav>
           <StyledNavLink
             to="/"
@@ -37,7 +43,7 @@ const Layout = () => {
       </header>
       <main>
         <Outlet />
-      </main>
+      </main> */}
     </div>
   );
 };

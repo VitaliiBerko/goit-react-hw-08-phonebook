@@ -1,5 +1,6 @@
 import { nanoid } from "nanoid";
-import s from './contactForm.module.css';
+import s from  '../ContactForm/contactForm.module.css';
+import { joinUser } from "redux/auth/auth.operation";
 const { useState } = require("react")
 const { useDispatch } = require("react-redux")
 
@@ -80,10 +81,10 @@ export const JoinForm =()=> {
         <input
           className={s.input}
           id={emailInputId}
-          type="tel"
-          name="number"
-          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+          type="email"
+          name="email"
+          // pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+          title="Email must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
           value={email}
           onChange={handleChange}
@@ -95,7 +96,7 @@ export const JoinForm =()=> {
           type="password"
         //   type={isPass ? 'password' : 'text'}
           name="password"
-          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+          // pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Password must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
           value={password}

@@ -1,7 +1,8 @@
 import { nanoid } from "nanoid";
-import s from './contactForm.module.css';
+import s from '../ContactForm/contactForm.module.css';
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { logIn } from "redux/auth/auth.operation";
 
 
 export const LoginForm =()=> {
@@ -32,8 +33,8 @@ export const LoginForm =()=> {
   const handleOnSubmit = evt => {
     evt.preventDefault();
     const form = evt.target;
-    const { name, email, password } = form.elements;
-    const userName = name.value;
+    const { email, password } = form.elements;
+    // const userName = name.value;
     const userEmail = email.value;
     const userPassword = password.value;
 
@@ -47,10 +48,10 @@ export const LoginForm =()=> {
     //   return;
     // } else {
       
-      dispatch(login({ name: userName, email: userEmail, password: userPassword}));
-      
+      dispatch(logIn({email: userEmail, password: userPassword}));      
       setEmail('');
       setPassword('');
+      // form.reset();
 //     }
   };
 
@@ -63,10 +64,10 @@ export const LoginForm =()=> {
         <input
           className={s.input}
           id={emailInputId}
-          type="tel"
-          name="number"
-          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+          type="email"
+          name="email"
+          // pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+          // title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
           value={email}
           onChange={handleChange}
@@ -78,7 +79,7 @@ export const LoginForm =()=> {
         //   type={isPass ? 'password' : 'text'}
           type="password"
           name="password"
-          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+          // pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Password must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
           value={password}
@@ -86,7 +87,7 @@ export const LoginForm =()=> {
         />
   
         <button className={s.btnAddContact} type="submit">
-          Join
+          LogIn
         </button>
       </form>)
 }

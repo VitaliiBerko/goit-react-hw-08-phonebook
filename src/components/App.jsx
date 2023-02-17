@@ -1,42 +1,23 @@
-import { Fragment, useEffect } from 'react';
-import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+// import { Fragment, useEffect } from 'react';
+// import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-import { ContactForm } from './ContactForm/ContactForm';
-import { ContactList } from './ContactList/ContactList';
-import { Filter } from './Filter/Filter';
-import s from './app.module.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchContacts } from 'redux/contacts/operations';
-import {
-  selectContacts,
-  selectError,
-  selectIsloading,
-} from 'redux/contacts/contacts.selector';
+// import { useDispatch,} from 'react-redux';
+// import { fetchContacts } from 'redux/contacts/operations';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import Layout from './Layout/Loyout';
 import HomePage from 'pages/HomePage/HomePage';
 import JoinPage from 'pages/JoinPage/JoinPage';
 import LoginPage from 'pages/Login/LoginPage';
+import ContactsPage from 'pages/ContactsPage/ContactsPage';
+import { PrivateRoute } from './AuthRouts/PrivateRoute';
 
 export const App = () => {
-  const dispatch = useDispatch();
-  const contacts = useSelector(selectContacts);
-  const isLoading = useSelector(selectIsloading);
-  const error = useSelector(selectError);
-
-  useEffect(() => {
-    dispatch(fetchContacts());
-  }, [dispatch]);
-
   return (
-    <BrowserRouter basename='/goit-react-hw-08-phonebook'>
-      
-      
-      <Suspense fallback={<p>Loading...</p>}> 
-
-      <Routes>
+    <BrowserRouter basename="/goit-react-hw-08-phonebook">
+      <Suspense fallback={<p>Loading...</p>}>
+        <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
             <Route path="/register" element={<JoinPage />} />
@@ -45,23 +26,15 @@ export const App = () => {
               <Route path="cast" element={<Cast />} />
               <Route path="reviews" element={<Reviews />} />
             </Route> */}
+            <Route path="" element={<PrivateRoute />}>
+              <Route path="/contacts" element={<ContactsPage />}></Route>
+            </Route>
+
+            <Route path="*" element={<HomePage />} />
           </Route>
-          <Route path="*" element={<HomePage />} />
-        </Routes>    
-      
-      
-      <Fragment>
-        <h1 className={s.container}>Phonebook</h1>
-        {isLoading && !error && <p>Loading...</p>}
-        <ContactForm />
-
-        <h2 className={s.container}>Contacts</h2>
-        <Filter />
-        {!!contacts && <ContactList />}
-      </Fragment>
-
+        </Routes>
       </Suspense>
-      <ToastContainer />
+      {/* <ToastContainer /> */}
     </BrowserRouter>
   );
 };
