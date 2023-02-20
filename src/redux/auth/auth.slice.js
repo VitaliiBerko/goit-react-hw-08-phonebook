@@ -58,7 +58,7 @@ export const authReducer = persistReducer(
   {
     key: 'auth',
     storage,
-    whitelist: ['token']
+    whitelist: ['token', 'user']
   },
   authSlice.reducer
 );

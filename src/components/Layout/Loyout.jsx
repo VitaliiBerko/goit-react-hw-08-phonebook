@@ -2,7 +2,7 @@ import { Outlet } from 'react-router-dom';
 // import { NavLink } from 'react-router-dom';
 // import css from './layout.module.css';
 // import { Nav, StyledNavLink } from './layout.styled';
-import { Suspense } from 'react';
+import { Fragment, Suspense } from 'react';
 import { AppBar } from 'components/AppBar/AppBar';
 
 // const aciveStyle = {
@@ -11,7 +11,7 @@ import { AppBar } from 'components/AppBar/AppBar';
 
 const Layout = () => {
   return (
-    <div>
+    <Fragment>
       <AppBar />
       <Suspense fallback={null}>
         <Outlet />
@@ -44,7 +44,7 @@ const Layout = () => {
       <main>
         <Outlet />
       </main> */}
-    </div>
+    </Fragment>
   );
 };
 

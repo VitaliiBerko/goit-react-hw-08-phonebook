@@ -13,7 +13,7 @@ export const UserMenu =()=> {
 
     return (
         <div>
-            <p>Welcome, {name}</p>
+            <h2>Welcome, {name}</h2>
             <button type="button" onClick={handlLogOut}>Log out</button>
         </div>
     )

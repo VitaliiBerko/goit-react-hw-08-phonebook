@@ -24,3 +24,4 @@ export const logIn =createAsyncThunk('auth/login',  async(credentials, thunkApi)
     return thunkApi.rejectWithValue(error.message);
   }
 })
+
