@@ -4,8 +4,8 @@ import 'react-toastify/dist/ReactToastify.css';
 
 // import { useDispatch,} from 'react-redux';
 // import { fetchContacts } from 'redux/contacts/operations';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { lazy, Suspense } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Suspense } from 'react';
 import Layout from './Layout/Loyout';
 import HomePage from 'pages/HomePage/HomePage';
 import JoinPage from 'pages/JoinPage/JoinPage';

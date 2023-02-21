@@ -10,6 +10,7 @@ export const fetchContacts = createAsyncThunk(
   async (_, thunkApi) => {
     try {
       const response = await privateApi.get('/contacts');
+      
       return response.data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
@@ -22,6 +23,7 @@ export const addContact = createAsyncThunk(
   async (contact, thunkApi) => {
     try {
       const response = await privateApi.post('/contacts', contact);
+      
       return response.data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
