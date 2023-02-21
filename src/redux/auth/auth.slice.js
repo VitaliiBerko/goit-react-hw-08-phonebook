@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { joinUser, logIn } from './auth.operation';
+import { joinUser, logIn, refreshUser } from './auth.operation';
 import Notiflix from 'notiflix';
 
 const initialState = {
@@ -48,7 +48,20 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.error = payload;
         Notiflix.Notify.failure(payload);
-      } );
+      } )
+      .addCase(refreshUser.pending, state=>{state.isLoading=true})
+      .addCase(refreshUser.fulfilled, (state, {payload})=>{
+        state.isLoading=false;
+        state.user = payload;
+        state.isLoggedIn=true;
+        state.isRefreshing= false;
+      })
+      .addCase(refreshUser.rejected, (state, {payload})=>{
+        state.isLoading= false;
+        state.error=payload;
+        state.isRefreshing= false;
+      })
+      ;
   },
 });
 

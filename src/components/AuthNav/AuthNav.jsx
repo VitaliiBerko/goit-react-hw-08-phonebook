@@ -1,12 +1,13 @@
 import { StyledNavLink } from 'components/Layout/layout.styled';
 import { useLocation } from 'react-router-dom';
+import styles from '../AuthNav/AuthNav.module.css'
 
 export const AuthNav = () => {
 
   const location = useLocation()
   
   return (
-    <ul>
+    <ul className={styles.listAuthNav}>
       <li>
         <StyledNavLink
           to="/register"

@@ -1,6 +1,6 @@
 const HomePage =()=>{
     return (
-        <div>Hello! This is your phonebook!</div>
+        <h2>Hello! This is your phonebook!</h2>
     )
 }
 

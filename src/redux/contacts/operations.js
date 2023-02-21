@@ -9,8 +9,7 @@ export const fetchContacts = createAsyncThunk(
   'contacts/fetchAll',
   async (_, thunkApi) => {
     try {
-      const response = await privateApi.get('/contacts');
-      
+      const response = await privateApi.get('/contacts');      
       return response.data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);

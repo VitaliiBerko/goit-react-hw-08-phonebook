@@ -1,5 +1,5 @@
 import { Fragment, useEffect } from 'react';
-import s from '../../components/app.module.css';
+import styles from '../../components/common.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectContacts,
@@ -24,11 +24,11 @@ const ContactsPage = () => {
 
   return (
     <Fragment>
-      <h1 className={s.container}>Phonebook</h1>
+      <h1 className={styles.container}>Phonebook</h1>
       {isLoading && !error && <p>Loading...</p>}
       <ContactForm />
 
-      <h2 className={s.container}>Contacts</h2>
+      <h2 className={styles.container}>Contacts</h2>
       <Filter />
       {!!contacts && <ContactList />}
     </Fragment>
