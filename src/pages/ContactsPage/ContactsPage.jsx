@@ -11,28 +11,32 @@ import { ContactForm } from 'components/ContactForm/ContactForm';
 import { Filter } from 'components/Filter/Filter';
 import { ContactList } from 'components/ContactList/ContactList';
 import clsx from 'clsx';
+import Loader from 'components/Loader/loader';
 
 const ContactsPage = () => {
   const contacts = useSelector(selectContacts);
   const isLoading = useSelector(selectIsloading);
   const error = useSelector(selectError);
   const dispatch = useDispatch();
- 
+
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
+  return isLoading ? <Loader/> :  (
+    <>    
+      <div className={clsx(styles.container)}>
+        <h1 className={clsx(styles.textCentr)}>Phonebook</h1>
+        {isLoading && !error && <Loader />}
+         <ContactForm />
+      </div>
 
-  return (
-    <div className={clsx(styles.container)}>
-      <h1 className={clsx(styles.textCentr)}>Phonebook</h1>
-      {isLoading && !error && <p className={clsx(styles.textCentr)}>Loading...</p>}
-      <ContactForm  />
-
-      <h2 className={clsx(styles.textCentr)}>Contacts</h2>
-      <Filter  />
-      {!!contacts && <ContactList />}
-    </div>
+      <div className={clsx(styles.container)}>
+        <h2 className={clsx(styles.textCentr)}>Contacts</h2>
+        <Filter />
+        {!!contacts && <ContactList />}
+      </div>
+    </>
   );
 };
 

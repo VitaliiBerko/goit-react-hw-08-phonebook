@@ -10,7 +10,7 @@ export const ContactListItem = ({ id, name, number }) => {
     dispatch(deleteContact(id));
   };
   return (
-    <li className={s.item}>
+    <li >
       {name} : {number}
       <button
         className={s.btnDelete}

@@ -12,10 +12,8 @@ export const AppBar = () => {
   return (
     <header>
       <ContainerHeader>
-        {/* <div style={styles.containerHeader}> */}
         <Navigation />
         {token ? <UserMenu /> : <AuthNav />}
-        {/* </div>        */}
       </ContainerHeader>
     </header>
   );

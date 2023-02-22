@@ -1,30 +1,19 @@
 import { StyledNavLink } from 'components/Layout/layout.styled';
 import { useLocation } from 'react-router-dom';
-import styles from '../AuthNav/AuthNav.module.css'
+import styles from '../AuthNav/AuthNav.module.css';
 
 export const AuthNav = () => {
+  const location = useLocation();
 
-  const location = useLocation()
-  
   return (
     <ul className={styles.listAuthNav}>
       <li>
-        <StyledNavLink
-          to="/register"
-          state={{from: location}}
-          // className={css.link}
-          // style={({ isActive }) => (isActive ? aciveStyle : null)}
-        >
+        <StyledNavLink to="/register" state={{ from: location }}>
           Join
         </StyledNavLink>
       </li>
       <li>
-        <StyledNavLink
-          to="/login"
-          state={{from: location}}
-          // className={css.link}
-          // style={({ isActive }) => (isActive ? aciveStyle : null)}
-        >
+        <StyledNavLink to="/login" state={{ from: location }}>
           Login
         </StyledNavLink>
       </li>

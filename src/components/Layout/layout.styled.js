@@ -14,7 +14,7 @@ export const StyledNavLink = styled(NavLink)`
   
 
   &.active {
-    color: tomato;
+    color: blue;
   }
 
   :focus,
