@@ -1,4 +1,24 @@
 .container {
     padding: 16px;
     max-width: 1600px;
+    
+
+}
+
+.containerCentr {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.textCentr {
+    text-align: center;
+}
+
+
+.btn {
+    margin: 8px;
+}
+.menu {
+    display: flex;
+    align-items: center;
 }

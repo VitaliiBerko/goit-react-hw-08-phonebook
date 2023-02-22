@@ -14,27 +14,27 @@ import ContactsPage from 'pages/ContactsPage/ContactsPage';
 import { PrivateRoute } from './AuthRouts/PrivateRoute';
 import { PublicRoute } from './AuthRouts/PublicRoute';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectAuthToken, selectIsRefreshing } from 'redux/auth/auth.selector';
+import { selectIsRefreshing } from 'redux/auth/auth.selector';
 import { refreshUser } from 'redux/auth/auth.operation';
 
 export const App = () => {
   const dispatch = useDispatch();
-  // const isRefreshing = useSelector(selectIsRefreshing);
-  const token = useSelector(selectAuthToken);
+  const isRefreshing = useSelector(selectIsRefreshing);
+  // const token = useSelector(selectAuthToken);
 
-  // useEffect(() => {
-  //   dispatch(refreshUser());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
 
-  useEffect(()=>{
-    dispatch(refreshUser())
-  }, [dispatch, token])
+  // useEffect(()=>{
+  //   dispatch(refreshUser())
+  // }, [dispatch, token])
 
   
-  // isRefreshing ? (
-  //   <p>Loading...</p>
-  // ) : 
- return (
+  return isRefreshing ? (
+    <p>Loading...</p>
+  ) : 
+  (
     <BrowserRouter basename="/goit-react-hw-08-phonebook">
       <Suspense fallback={<p>Loading...</p>}>
         <Routes>
