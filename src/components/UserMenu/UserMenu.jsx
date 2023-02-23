@@ -15,6 +15,7 @@ export const UserMenu =()=> {
     return (
         <div className={styles.menu}>
             <h2>Welcome, {name}!</h2>
+            <img src="https://img.icons8.com/arcade/64/null/rick-sanchez.png" alt="user"/>
             <button className="btn btn-outline-primary ms-3" type="button" onClick={handlLogOut}>Log out</button>
         </div>
     )
