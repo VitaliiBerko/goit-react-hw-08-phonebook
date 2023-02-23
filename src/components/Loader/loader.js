@@ -23,12 +23,3 @@ const Loader = () => (
 
 export default Loader;
 
-<div class="modal" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
-      </div>
-    </div>
-  </div>
-</div>;
