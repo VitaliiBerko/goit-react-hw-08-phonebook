@@ -67,7 +67,7 @@ export const LoginForm = () => {
         onChange={handleChange}
       />
 
-      <button className='btn btn-outline-primary' type="submit">
+      <button className='btn btn-primary' type="submit">
         LogIn
       </button>
     </form>
