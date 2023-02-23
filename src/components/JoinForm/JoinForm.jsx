@@ -90,7 +90,7 @@ export const JoinForm = () => {
         onChange={handleChange}
       />
 
-      <button className={s.btnAddContact} type="submit">
+      <button className="btn btn-outline-primary" type="submit">
         Join
       </button>
     </form>

@@ -11,7 +11,11 @@ export const ContactList = () => {
   );
 
   return (
+
+    
+
     <ul className={styles.list}>
+
       {findedContacts &&
         findedContacts.map(({ id, name, number }) => (
           <ContactListItem key={id} id={id} name={name} number={number} />

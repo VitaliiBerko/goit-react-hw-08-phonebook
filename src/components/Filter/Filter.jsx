@@ -1,4 +1,3 @@
-// import PropTypes from 'prop-types';
 import s from './filter.module.css';
 import { nanoid } from 'nanoid';
 import { useDispatch, useSelector } from 'react-redux';
@@ -29,7 +28,3 @@ export const Filter = () => {
   );
 };
 
-// Filter.propTypes = {
-//   value: PropTypes.string.isRequired,
-//   onChange: PropTypes.func.isRequired,
-// };

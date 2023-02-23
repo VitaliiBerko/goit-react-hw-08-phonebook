@@ -23,7 +23,9 @@ const ContactsPage = () => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
-  return isLoading ? <Loader/> :  (
+   
+
+  return (  
     <>    
       <div className={clsx(styles.container)}>
         <h1 className={clsx(styles.textCentr)}>Phonebook</h1>

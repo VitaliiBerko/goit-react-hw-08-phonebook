@@ -10,7 +10,7 @@ export const AppBar = () => {
   const token = useSelector(selectAuthToken);
 
   return (
-    <header>
+    <header className="pb-4" >
       <ShadowBottom>
         <ContainerHeader>
           <Navigation />

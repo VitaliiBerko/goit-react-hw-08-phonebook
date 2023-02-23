@@ -12,6 +12,8 @@ const initialState = {
   isRefreshing: false,
 };
 
+
+
 const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -75,3 +77,7 @@ export const authReducer = persistReducer(
   },
   authSlice.reducer
 );
+
+Notiflix.Notify.init({
+  position: 'center-center',
+});

@@ -81,7 +81,7 @@ export const ContactForm = () => {
         onChange={handleChange}
       />
 
-      <button className={s.btnAddContact} type="submit">
+      <button className="btn btn-outline-primary" type="submit">
         Add contact
       </button>
     </form>

@@ -15,7 +15,7 @@ export const UserMenu =()=> {
     return (
         <div className={styles.menu}>
             <h2>Welcome, {name}!</h2>
-            <button className={styles.btn} type="button" onClick={handlLogOut}>Log out</button>
+            <button class="btn btn-outline-primary ms-3" type="button" onClick={handlLogOut}>Log out</button>
         </div>
     )
 }
