@@ -13,7 +13,7 @@ export const ContactListItem = ({ id, name, number }) => {
     <li className={styles.item}>
       {name} : {number}
       <button
-        class="btn btn-outline-danger  btn-sm mr-auto ms-5 mb-2 mt-2"
+        className="btn btn-outline-danger  btn-sm mr-auto ms-5 mb-2 mt-2"
         
         type="button"
         onClick={() => {
