@@ -1,7 +1,7 @@
 import { AuthNav } from 'components/AuthNav/AuthNav';
 import { Navigation } from 'components/Navigation/Navigation';
 import { UserMenu } from 'components/UserMenu/UserMenu';
-import { ContainerHeader } from 'components/comon.styled';
+import { ContainerHeader, ShadowBottom } from 'components/comon.styled';
 import { useSelector } from 'react-redux';
 import { selectAuthToken } from 'redux/auth/auth.selector';
 // import styles from '../AppBar/AppBar.module.css'
@@ -11,10 +11,12 @@ export const AppBar = () => {
 
   return (
     <header>
-      <ContainerHeader>
-        <Navigation />
-        {token ? <UserMenu /> : <AuthNav />}
-      </ContainerHeader>
+      <ShadowBottom>
+        <ContainerHeader>
+          <Navigation />
+          {token ? <UserMenu /> : <AuthNav />}
+        </ContainerHeader>
+      </ShadowBottom>
     </header>
   );
 };
