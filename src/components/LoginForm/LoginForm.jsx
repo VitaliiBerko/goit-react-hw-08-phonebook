@@ -1,11 +1,14 @@
 import { nanoid } from 'nanoid';
 import s from '../ContactForm/contactForm.module.css';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { logIn } from 'redux/auth/auth.operation';
+import Loader from 'components/Loader/loader';
+import { selectIsLoading } from 'redux/auth/auth.selector';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsLoading);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -40,7 +43,7 @@ export const LoginForm = () => {
     setPassword('');
   };
 
-  return (
+  return isLoading ? (<Loader/>) :( 
     <form onSubmit={handleOnSubmit} className={s.form}>
       <label htmlFor={emailInputId}>Email</label>
       <input

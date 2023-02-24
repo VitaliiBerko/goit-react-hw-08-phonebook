@@ -1,11 +1,14 @@
 import { nanoid } from 'nanoid';
 import s from '../ContactForm/contactForm.module.css';
 import { joinUser } from 'redux/auth/auth.operation';
+import { selectIsLoading } from 'redux/auth/auth.selector';
+import Loader from 'components/Loader/loader';
 const { useState } = require('react');
-const { useDispatch } = require('react-redux');
+const { useDispatch, useSelector } = require('react-redux');
 
 export const JoinForm = () => {
   const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsLoading);
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -49,7 +52,7 @@ export const JoinForm = () => {
     setPassword('');
   };
 
-  return (
+  return isLoading ? (<Loader/>) : (
     <form onSubmit={handleOnSubmit} className={s.form}>
       <label htmlFor={nameInputId}>Name</label>
       <input
@@ -84,12 +87,13 @@ export const JoinForm = () => {
         //   type={isPass ? 'password' : 'text'}
         name="password"
         // pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-        title="Password must be digits and can contain spaces, dashes, parentheses and can start with +"
+        title="Password must be digits and have more then 7 characters and can contain spaces, dashes, parentheses and can start with +"
+        placeholder='Your password must be 7 characters or longer.'
         required
         value={password}
         onChange={handleChange}
       />
-
+     
       <button className="btn btn-primary" type="submit">
         Join
       </button>

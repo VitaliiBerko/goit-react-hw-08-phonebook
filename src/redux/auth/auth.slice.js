@@ -34,7 +34,7 @@ const authSlice = createSlice({
       .addCase(joinUser.rejected, (state, { payload }) => {
         state.isLoading = false;
         state.error = payload;
-        Notiflix.Notify.failure(payload);
+        Notiflix.Notify.failure("Something went wrong. Please, try again");
       })
       .addCase(logIn.pending, state=> {
         state.isLoading = true;
@@ -49,7 +49,7 @@ const authSlice = createSlice({
       .addCase(logIn.rejected, (state, {payload }) => {
         state.isLoading = false;
         state.error = payload;
-        Notiflix.Notify.failure(payload);
+        Notiflix.Notify.failure("Ooops... Innocent password or email");
       } )
       .addCase(refreshUser.pending, state=>{state.isLoading=true})
       .addCase(refreshUser.fulfilled, (state, {payload})=>{

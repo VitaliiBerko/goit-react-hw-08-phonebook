@@ -31,10 +31,10 @@ export const App = () => {
   // }, [dispatch, token])
 
   return isRefreshing ? (
-    <Loader/>
+    <Loader />
   ) : (
     <BrowserRouter basename="/goit-react-hw-08-phonebook">
-      <Suspense fallback={<p>Loading...</p>}>
+      <Suspense fallback={<Loader />}>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
