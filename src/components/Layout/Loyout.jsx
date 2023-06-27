@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom';
 // import { Nav, StyledNavLink } from './layout.styled';
 import { Fragment, Suspense } from 'react';
 import { AppBar } from 'components/AppBar/AppBar';
+import Loader from 'components/Loader/loader';
 
 // const aciveStyle = {
 //   color: 'tomato',
@@ -13,7 +14,7 @@ const Layout = () => {
   return (
     <Fragment>
       <AppBar />
-      <Suspense fallback={null}>
+      <Suspense fallback={<Loader />}>
         <Outlet />
       </Suspense>
       {/* <header>

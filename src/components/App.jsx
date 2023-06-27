@@ -1,7 +1,7 @@
 import 'react-toastify/dist/ReactToastify.css';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Suspense, lazy, useEffect } from 'react';
+import { lazy, useEffect } from 'react';
 
 import { PrivateRoute } from './AuthRouts/PrivateRoute';
 import { PublicRoute } from './AuthRouts/PublicRoute';
@@ -34,23 +34,21 @@ export const App = () => {
     <Loader />
   ) : (
     <BrowserRouter basename="/goit-react-hw-08-phonebook">
-      <Suspense fallback={<Loader />}>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<HomePage />} />
-            <Route path="" element={<PublicRoute />}>
-              <Route path="/register" element={<JoinPage />} />
-              <Route path="/login" element={<LoginPage />} />
-            </Route>
-
-            <Route path="" element={<PrivateRoute />}>
-              <Route path="/contacts" element={<ContactsPage />}></Route>
-            </Route>
-
-            <Route path="*" element={<HomePage />} />
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<HomePage />} />
+          <Route path="" element={<PublicRoute />}>
+            <Route path="/register" element={<JoinPage />} />
+            <Route path="/login" element={<LoginPage />} />
           </Route>
-        </Routes>
-      </Suspense>
+
+          <Route path="" element={<PrivateRoute />}>
+            <Route path="/contacts" element={<ContactsPage />}></Route>
+          </Route>
+
+          <Route path="*" element={<HomePage />} />
+        </Route>
+      </Routes>
     </BrowserRouter>
   );
 };
